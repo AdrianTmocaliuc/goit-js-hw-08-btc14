@@ -9,18 +9,18 @@ const STORAGE_KEY = 'feedback-form-state';
 
 function formListener(e) {
   const form = e.target.closest('form');
-  const formData = new FormData(form);
+  // const formData = new FormData(form);
   const finalData = {};
 
-  // const { email, message } = form.elements;
-  // finalData[email.name] = email.value;
-  // finalData[message.name] = message.value;
+  const { email, message } = form.elements;
+  finalData[email.name] = email.value;
+  finalData[message.name] = message.value;
 
-  // console.log(form);
+  console.log(form);
 
-  for (const [key, value] of formData.entries()) {
-    finalData[key] = value;
-  }
+  // for (const [key, value] of formData.entries()) {
+  //   finalData[key] = value;
+  // }
   // console.log(finalData);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(finalData));
 }
